@@ -17,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/NSAAlex/tri-shieldsecurity_backend/issues"
   },
-  "homepage": "https://github.com/NSAAlex/tri-shieldsecurity_backend#readme"
+  "homepage": "https://github.com/NSAAlex/tri-shieldsecurity_backend#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.3.0",
+    "mongoose": "^9.11.4",
+    "muller": "^1.1.0",
+    "multer": "^2.5.0"
+  }
 }
