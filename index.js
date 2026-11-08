@@ -109,7 +109,7 @@ let threats = [
 ]
 
 app.get("/api/threats", (req, res) => {
-  res.send("threats");
+  res.json(threats);
 });
 
 // GET all threats
