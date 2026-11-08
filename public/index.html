@@ -1,13 +1,121 @@
+
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="index.css">
-        <title>Tri-Shield Security</title>
-    </head>
-    <body>
-        <header>
-            <h1>Tri-Shield Security</h1>
-            <p><a href="api/threats">View Threats</a></p>
-        </header>
-    </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRI-Shield Security | API Server</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="/" class="brand">
+        <span class="brand-icon">🛡️</span>
+        <span>TRI-<span class="accent">Shield</span><br>Security</span>
+      </a>
+      <span class="server-label">BACKEND API SERVER</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">TRI-Shield Security API</p>
+
+        <h1>
+          CYBER THREAT<br>
+          <span class="accent">INTELLIGENCE API.</span>
+        </h1>
+
+        <p class="hero-description">
+          Welcome to the TRI-Shield Security backend.
+          This server provides structured cybersecurity
+          threat information to our React website.
+          Explore the available API endpoints below.
+        </p>
+
+        <a class="primary-button" href="/api/threats">
+          Explore Threat Data →
+        </a>
+      </div>
+    </section>
+
+    <section class="api-section">
+      <div class="container">
+        <p class="eyebrow">Developer Resources</p>
+        <h2>AVAILABLE API ENDPOINTS</h2>
+        <p class="section-description">
+          Access our cybersecurity threat database through
+          the following REST API endpoint.
+        </p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-heading">
+            <span class="method-badge">GET</span>
+            <h3>All Cybersecurity Threats</h3>
+          </div>
+
+          <p class="endpoint-path">/api/threats</p>
+
+          <p class="endpoint-description">
+            Returns a JSON array of eight common cybersecurity
+            threats, including phishing, malware, ransomware,
+            and insider threats.
+          </p>
+
+          <div class="endpoint-features">
+            <span>Threat Names</span>
+            <span>Severity Levels</span>
+            <span>Categories</span>
+            <span>Descriptions</span>
+            <span>Defense Strategies</span>
+          </div>
+
+          <a href="/api/threats" class="endpoint-link">
+            View JSON Response →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <div class="container info-grid">
+        <div class="info-card">
+          <div class="info-icon">🛡️</div>
+          <h3>Threat Intelligence</h3>
+          <p>
+            Explore cybersecurity risks and understand
+            the threats facing modern organizations.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">🔐</div>
+          <h3>Security Awareness</h3>
+          <p>
+            Learn how cyberattacks work and what
+            organizations can do to protect themselves.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">🌐</div>
+          <h3>React Integration</h3>
+          <p>
+            Our React frontend retrieves this data
+            directly from our live Render server.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© 2026 TRI-Shield Security. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
 </html>
