@@ -4,116 +4,147 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TRI-Shield Security | API Server</title>
+  <title>TRI-Shield Security | API</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="/style.css" />
 </head>
 
 <body>
   <header class="site-header">
-    <div class="container header-content">
+    <div class="container header-inner">
       <a href="/" class="brand">
-        <span class="brand-icon">🛡️</span>
-        <span>TRI-<span class="accent">Shield</span><br>Security</span>
+        <img src="/images/tri-shield-logo.png" alt="TRI-Shield Security logo" />
+        <span>TRI-<strong>Shield</strong><br />Security</span>
       </a>
-      <span class="server-label">BACKEND API SERVER</span>
+
+      <nav class="header-nav">
+        <a href="#api">API Endpoints</a>
+        <a href="#security">Our Approach</a>
+      </nav>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container">
-        <p class="eyebrow">TRI-Shield Security API</p>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow">Cybersecurity solutions for a safer tomorrow.</p>
 
-        <h1>
-          CYBER THREAT<br>
-          <span class="accent">INTELLIGENCE API.</span>
-        </h1>
+          <h1>
+            YOUR SECURITY.<br />
+            <span>OUR API.</span>
+          </h1>
 
-        <p class="hero-description">
-          Welcome to the TRI-Shield Security backend.
-          This server provides structured cybersecurity
-          threat information to our React website.
-          Explore the available API endpoints below.
-        </p>
+          <p class="hero-description">
+            TRI-Shield Security provides cybersecurity threat
+            intelligence through a live REST API. Explore our
+            threat database and see the data powering our
+            React cybersecurity website.
+          </p>
 
-        <a class="primary-button" href="/api/threats">
-          Explore Threat Data →
-        </a>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/api/threats">
+              Explore Threat Data →
+            </a>
+            <a class="btn btn-outline" href="#api">
+              Learn More
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img src="/images/tri-shield-logo.png" alt="TRI-Shield protective shields" />
+        </div>
       </div>
     </section>
 
-    <section class="api-section">
+    <section class="pillars" id="security">
+      <div class="container pillars-grid">
+        <article class="pillar">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+          </svg>
+          <div>
+            <span class="pillar-number">01</span>
+            <h3>Prevent</h3>
+            <p>Stop threats before they cause damage.</p>
+          </div>
+        </article>
+
+        <article class="pillar">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          <div>
+            <span class="pillar-number">02</span>
+            <h3>Detect</h3>
+            <p>Identify and analyze suspicious activity.</p>
+          </div>
+        </article>
+
+        <article class="pillar">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m13 2-9 12h7l-1 8 10-12h-7V2Z" />
+          </svg>
+          <div>
+            <span class="pillar-number">03</span>
+            <h3>Respond</h3>
+            <p>Take action and restore security quickly.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="api-section" id="api">
       <div class="container">
         <p class="eyebrow">Developer Resources</p>
-        <h2>AVAILABLE API ENDPOINTS</h2>
+        <h2>AVAILABLE <span>API ENDPOINTS.</span></h2>
         <p class="section-description">
-          Access our cybersecurity threat database through
-          the following REST API endpoint.
+          Our server provides live cybersecurity threat data
+          to the TRI-Shield React frontend.
         </p>
 
-        <div class="endpoint-card">
-          <div class="endpoint-heading">
-            <span class="method-badge">GET</span>
+        <article class="endpoint-card">
+          <div class="endpoint-title">
+            <span class="method">GET</span>
             <h3>All Cybersecurity Threats</h3>
           </div>
 
-          <p class="endpoint-path">/api/threats</p>
+          <div class="endpoint-path">/api/threats</div>
 
-          <p class="endpoint-description">
-            Returns a JSON array of eight common cybersecurity
-            threats, including phishing, malware, ransomware,
-            and insider threats.
+          <p>
+            Retrieve cybersecurity threats, severity levels,
+            categories, descriptions, and defense strategies
+            in JSON format.
           </p>
 
-          <div class="endpoint-features">
+          <div class="tags">
             <span>Threat Names</span>
-            <span>Severity Levels</span>
+            <span>Severity</span>
             <span>Categories</span>
             <span>Descriptions</span>
             <span>Defense Strategies</span>
           </div>
 
-          <a href="/api/threats" class="endpoint-link">
+          <a class="btn btn-primary" href="/api/threats">
             View JSON Response →
           </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="info-section">
-      <div class="container info-grid">
-        <div class="info-card">
-          <div class="info-icon">🛡️</div>
-          <h3>Threat Intelligence</h3>
-          <p>
-            Explore cybersecurity risks and understand
-            the threats facing modern organizations.
-          </p>
-        </div>
-
-        <div class="info-card">
-          <div class="info-icon">🔐</div>
-          <h3>Security Awareness</h3>
-          <p>
-            Learn how cyberattacks work and what
-            organizations can do to protect themselves.
-          </p>
-        </div>
-
-        <div class="info-card">
-          <div class="info-icon">🌐</div>
-          <h3>React Integration</h3>
-          <p>
-            Our React frontend retrieves this data
-            directly from our live Render server.
-          </p>
-        </div>
+        </article>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-content">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="/images/tri-shield-logo.png" alt="" />
+        <strong>TRI-<span>Shield</span> Security</strong>
+      </div>
       <p>© 2026 TRI-Shield Security. All rights reserved.</p>
     </div>
   </footer>
