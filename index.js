@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const multer = require("multer");
+const Joi = require("joi");
 const app = express();
 app.use(express.static("public"));
 app.use(express.json());
@@ -16,6 +17,27 @@ const storage = multer.diskStorage({
   });
 
 const upload = multer({ storage: storage });
+
+
+/*PROJECT PART 12 Joi validation for new cybersecurity threats.*/
+
+const threatSchema = Joi.object({
+  name: Joi.string().trim().min(3).max(60).required(),
+
+  severity: Joi.string()
+    .valid("Low", "Medium", "High", "Critical")
+    .required(),
+
+  category: Joi.string().trim().min(3).max(60).required(),
+
+  common_target: Joi.string().trim().min(3).max(100).required(),
+
+  description: Joi.string().trim().min(10).max(300).required(),
+
+  how_it_works: Joi.string().trim().min(10).max(1000).required(),
+
+  how_we_defend: Joi.string().trim().min(10).max(1000).required()
+});
 
 let threats = [
   {
@@ -107,6 +129,44 @@ let threats = [
     "how_we_defend": "We require strong, unique passwords with a password manager and multi-factor login, and lock accounts that show repeated failed attempts."
   }
 ]
+
+
+/*PROJECT PART 12 POST /api/threats*/
+
+app.post("/api/threats", (req, res) => {
+  const { error, value } = threatSchema.validate(req.body, {
+    abortEarly: false
+  });
+
+  if (error) {
+    return res.status(400).json({
+      success: false,
+      message: "Please correct the validation errors.",
+      errors: error.details.map((detail) => detail.message)
+    });
+  }
+
+  // Create a unique numeric ID.
+  const nextId =
+    threats.length > 0
+      ? Math.max(...threats.map((threat) => threat._id)) + 1
+      : 1;
+
+  const newThreat = {
+    _id: nextId,
+    ...value,
+    img_name: "images/threat-malware.png"
+  };
+
+  threats.push(newThreat);
+
+  return res.status(201).json({
+    success: true,
+    message: "Cybersecurity threat added successfully!",
+    threat: newThreat
+  });
+});
+
 
 app.get("/api/threats", (req, res) => {
   res.json(threats);
