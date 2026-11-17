@@ -39,6 +39,12 @@ const threatSchema = Joi.object({
   how_we_defend: Joi.string().trim().min(10).max(1000).required()
 });
 
+const threatIdSchema = Joi.number()
+  .integer()
+  .positive()
+  .required();
+
+
 let threats = [
   {
     "_id": 1,
@@ -164,6 +170,85 @@ app.post("/api/threats", (req, res) => {
     success: true,
     message: "Cybersecurity threat added successfully!",
     threat: newThreat
+  });
+});
+
+
+// PROJECT PART 13: Edit a cybersecurity threat
+app.put("/api/threats/:id", (req, res) => {
+  const idValidation = threatIdSchema.validate(req.params.id);
+
+  if (idValidation.error) {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid threat ID."
+    });
+  }
+
+  const index = threats.findIndex(
+    (threat) => threat._id === idValidation.value
+  );
+
+  if (index === -1) {
+    return res.status(404).json({
+      success: false,
+      message: "Threat not found."
+    });
+  }
+
+  const { error, value } = threatSchema.validate(req.body, {
+    abortEarly: false
+  });
+
+  if (error) {
+    return res.status(400).json({
+      success: false,
+      message: "Please correct the validation errors.",
+      errors: error.details.map((detail) => detail.message)
+    });
+  }
+
+  threats[index] = {
+    ...threats[index],
+    ...value
+  };
+
+  return res.status(200).json({
+    success: true,
+    message: "Threat updated successfully!",
+    threat: threats[index]
+  });
+});
+
+
+// PROJECT PART 13: Delete a cybersecurity threat
+app.delete("/api/threats/:id", (req, res) => {
+  const { error, value } =
+    threatIdSchema.validate(req.params.id);
+
+  if (error) {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid threat ID."
+    });
+  }
+
+  const index = threats.findIndex(
+    (threat) => threat._id === value
+  );
+
+  if (index === -1) {
+    return res.status(404).json({
+      success: false,
+      message: "Threat not found."
+    });
+  }
+
+  threats.splice(index, 1);
+
+  return res.status(200).json({
+    success: true,
+    message: "Threat deleted successfully!"
   });
 });
 
